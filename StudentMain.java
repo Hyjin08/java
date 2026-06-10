@@ -1,4 +1,7 @@
 package jump2java;
+
+import java.util.Scanner;
+
 class Student{
 	String name;
 	double score;
@@ -30,8 +33,14 @@ class Student{
 public class StudentMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		System.out.println("이름, 점수를 입력하시오.");
+		String name = sc.next();
+		double score = sc.nextDouble();
+		
+		Student s1 = new Student(name, score);
+		s1.printInfo();
+		System.out.println(s1.getGrade() + "등급입니다");
 	}
 
 }
