@@ -1,34 +1,60 @@
-package sample;
+package jump2java;
+//도서관 
 import java.util.Scanner;
 
-class Book{
+//Book 클래스
+class Book {
 	String title;
 	String author;
-	int year;
-	boolean borrow;
+	int year; //발행 년도
+	boolean borrow; //대출여부 저장
 	
+	//생성자
 	Book(String title, String author, int year){
 		this.title = title;
 		this.author = author;
 		this.year = year;
-		borrow = false;
-	}
-	void show() {
-		System.out.println("제목"+ title);
+		borrow = false; //생성자에서 값 지정 가능
+		
 	}
 	
+	//메소드(반환X)
+	void show() {
+		System.out.println("제목: "+ title);
+		System.out.println("저자: "+ author);
+		System.out.println("출판년도: "+ year);
+	}
+	
+	//대출하는 메소드
 	String borrowOf() {
-		if(borrow) {
+		if (borrow) {
 			return "대출 중";
 		} else {
 			borrow = true;
-			return "대출 가능";
+			return "대출 완료";
 		}
 	}
 }
 
-public class S0609 {
+class Novel extends Book{
+	String genre;
+	
+	Novel(String title, String author, int year, String genre){
+		super(title, author, year);
+		this.genre = genre;
+	}
+}
 
+class Science extends Book{
+	int level;
+	
+	Science(String title, String author, int year, int level){
+		super(title, author, year);
+		this.level = level;
+	}
+}
+
+public class S0609 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("책 제목: ");
@@ -37,10 +63,29 @@ public class S0609 {
 		String author = sc.next();
 		System.out.println("발행연도: ");
 		int year = sc.nextInt();
-
+		sc.close();
+		
+		
+		
+		Book[] book = new Book[2];
+		book[0] = new Novel(title, author, year, "코믹");
+		book[1] = new Science("양자컴퓨터", "누군가", 2025, 3);
+		
+		for(int i=0; i< book.length; i++) {
+			book[i].show();
+		}
+		
+		
+		
+		//객체 생성
 		Book b1 = new Book(title, author, year);
 		b1.show();
-		System.out.println("대출 상태: "+ b1.borrowOf());
+		System.out.println(b1.borrowOf());
+		System.out.println(b1.borrowOf());
+		
+		Novel b2 = new Novel("해리포터", "롤링", 1990, "판타지");
+		b2.show();
+		System.out.println(b2.borrowOf());
+		System.out.println(b2.borrowOf());
 	}
-
-}
+}	
