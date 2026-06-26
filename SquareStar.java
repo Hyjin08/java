@@ -2,42 +2,21 @@ package jump2java;
 import java.util.Scanner;
 
 public class SquareStar {
-
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("높이: ");
-		int num = sc.nextInt();
-		sc.close();
-		
-		for(int i=1; i<=num;i++) {
-			for(int j=0; j<num; j++) {
-				System.out.println("*");
-			}
-			System.out.println();
-		}
-		
-		for(int i=0; i<num; i++) {
-			for(int j=0; j<i+1; j++) {
-				System.out.println("*");
-			}
-			System.out.println();
-		}
-		
-		for(int i=1; i<=num;i++) {
-			for(int j=0; j<num; j++) {
-				System.out.println("*");
-			}
-			System.out.println();
-		}
-		
-		for(int i=0; i<num; i++) {
-			for(int j=0; j<i+1; j++) {
-				System.out.println(" ");
-			}
-			for(int j=0; j<=i+1;j++) {
-				System.out.println("*");
-			}
-		}
-	}
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("높이를 입력하세요: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {      // 줄 수
+            for (int j = 1; j <= n; j++) {  // 별 개수
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
 
 }
+
